@@ -1,0 +1,41 @@
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 400px;
+        height: 70px;
+        background-color: #068089;
+        margin: 12px;
+        padding: 12px;
+        border-radius: 6px;
+    }
+    .left-asset {
+        background-color: white;
+        border-radius: 40px;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .middle-asset {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span,label {
+            color: white;
+            font-family: 'Poppins';
+        }
+        label {
+            opacity: 0.7;
+        }
+    }
+    .button:hover, *{
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,4 @@
+- name: generation documentation
+    template:
+      src: ARCHITECTURE.txt
+      dest: /srv/architecture.txt

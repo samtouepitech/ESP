@@ -1,0 +1,15 @@
+---
+- name: Création dossier projet voltron
+  file:
+    path: "{{ app_deploy_to }}"
+    state: directory
+    group: "{{ admin_group }}"
+- name: Copy app
+  copy:
+    src: files/
+    dest: "{{ app_deploy_to }}"
+
+- name: Launcer docker compose
+  shell:
+    cmd: docker-compose up -d
+    chdir: "{{ app_deploy_to }}/devOps/DevOps"

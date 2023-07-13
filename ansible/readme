@@ -1,0 +1,11 @@
+Pour générer un role
+    -  ansible-galaxy init nom_du_role
+Pour générer un mot de passe encrypter avec vault
+    -  ansible-vault encrypt_string
+lancer ansble pour decrypter le mot de passe
+    -  ansible-playbook -i hosts install.yml --ask-vault-pass
+Pour générer un mot de passe encrypter avec vault en utilisant un fichier ici .vault-pass
+    -  ansible-vault encrypt_string --name mysql_password --vault-id .vault_pass
+lancer ansble pour decrypter le mot de passe
+    - ansible-playbook -i hosts install.yml --vault-password-file nom_fichier_vault_pass
+    - ansible-playbook -i hosts install.yml --vault-password-file .vault_pass

@@ -1,0 +1,37 @@
+.notation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 42px;
+    overflow: hidden;
+    .notation-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // height: 100%;
+        // width: 100%;
+    }
+    .notation-button {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            height: 85px;
+            width: 416px;
+            background-color: #9db6be;
+            border: 1px solid #9db6be;
+            border-radius: 6px;
+            color: white;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 30px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    }
+}

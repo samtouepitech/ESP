@@ -1,0 +1,31 @@
+---
+- name: Firewall | Install ufw
+  apt:
+    name: ufw
+    state: present
+- name: Firewall | Policy
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  with_items:
+    - {direction: incoming, policy: deny}
+    - {direction: outgoing, policy: allow}
+- name: Firewall | limit ssh connexion
+  ufw:
+    rule: limit
+    port: ssh
+- name: Firewall | http
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+  with_items:
+    - http
+    - https
+    - 9000
+    - 19999
+    - 8929
+- name: Firewall | Activation
+  ufw:
+    state: enabled
+
+# tasks file for firewall

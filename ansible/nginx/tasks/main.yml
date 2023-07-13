@@ -1,0 +1,17 @@
+---
+- name: NGINX | Install
+  apt:
+    name: nginx
+    state: present
+- name: NGINX | Default vhost
+  template:
+    src: default.j2
+    dest: "/etc/nginx/sites-available/default"
+  notify: nginx reload
+#- name: "NGINX | Vhost {{ domain }}"
+#  template:
+#    src: vhost.j2
+#    dest: "/etc/nginx/sites-enabled/{{ domain }}"
+#  notify: nginx reload
+# tasks file for nginx
+

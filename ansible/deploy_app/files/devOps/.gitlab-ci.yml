@@ -1,0 +1,22 @@
+default:
+  image: node:latest
+
+  before_script:
+    - pwd
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+
+build-back:       # This job runs in the build stage, which runs first.
+    stage: build
+    script:
+        - cd ./back
+        - npm install
+        - npm run build
+
+build-front:
+    stage: build
+    script:
+        - cd ./front
+        - npm install
+        - npm run build

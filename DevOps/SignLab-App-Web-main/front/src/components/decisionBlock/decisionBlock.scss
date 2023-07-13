@@ -1,0 +1,22 @@
+.decisionBlock {
+    height: 50%;
+    width: 50%;
+    background-color: #068089;
+    margin: 24px;
+    filter: drop-shadow(10px 10px 51px rgba(0, 0, 0, 0.25));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 6px;
+    img {
+        color: white;
+    }
+    span {
+        font-family: 'Poppins';
+        color: white;
+    }
+}
+.decisionBlock:hover {
+    cursor: pointer;
+}

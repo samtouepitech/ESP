@@ -1,0 +1,78 @@
+---
+- name: Installation du serveur
+  hosts: all
+  remote_user: root
+  become: true
+  become_method: sudo
+  gather_facts: false
+  tasks:
+  - include_vars:
+      file: vars.yml
+
+  # - name: Create group
+  #   group:
+  #     name: "{{ admin_group }}"
+  #     state: present
+
+  # - name: "USER | Création des utilisateurs"
+  #   user:
+  #     name: "{{ item }}"
+  #     shell: /bin/bash
+  #     group: "{{ admin_group }}"
+  #   with_items: "{{ voltron_users }}"
+
+  # - name: USER | Clef ssh
+  #   authorized_key:
+  #     user: "{{ item }}"
+  #     state: present
+  #     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  #   with_items: "{{ voltron_users }}"
+
+  - name: APT | Update & Upgrade
+    apt:
+      upgrade: dist
+      update_cache: yes
+
+  # - include_role:
+  #     name: tools
+  # - include_role:
+  #     name: docker
+  # - include_role:
+  #     name: gitlab
+  # - include_role:
+  #     name: deploy_app
+
+  # - name: "USERS | Sudoers "
+  #   lineinfile:
+  #     dest: /etc/sudoers
+  #     state: present
+  #     regexp: "^{{ item }}"
+  #     line: '{{ item }} ALL=(ALL) NOPASSWD: ALL'
+  #     validate: 'visudo -cf %s'
+  #   with_items: "{{ voltron_users }}"
+
+
+#
+#  - include_role:
+#      name: nginx
+#  - include_role:
+#      name: docker
+#  - include_role:
+#      name: firewall
+#  - include_role:
+#      name: tools
+#  - include_role:
+#      name: php
+#  - include_role:
+#      name: mysql
+#  - include_role:
+#      name: nodejs
+#  - include_role:
+#      name: redis
+#  - command: "git init --bare {{ ansistrano_deploy_to }}.git"
+#    args:
+#      creates: "{{ ansistrano_deploy_to }}.git"
+#    become: true
+#    become_user: "{{ user }}"
+
+

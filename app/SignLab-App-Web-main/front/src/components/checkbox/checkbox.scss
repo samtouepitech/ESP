@@ -1,0 +1,27 @@
+.notation-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    .choice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .white-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            height: 30px;
+            width: 30px;
+            border-radius: 20px;
+            margin-right: 12px;
+            .blue-circle {
+                background-color: #068089;
+                height: 20px;
+                width: 20px;
+                border-radius: 15px;
+            }
+        }
+    }
+}

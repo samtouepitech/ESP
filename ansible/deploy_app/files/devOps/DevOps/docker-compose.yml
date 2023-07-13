@@ -1,0 +1,111 @@
+version: '3.8'
+services:
+#  INIT POSTGRESS DB
+#  pg_container:
+#    container_name: db
+#    image: postgres
+#    restart: always
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_DB: app_db
+#    ports:
+#      - "5433:5432"
+#    volumes:
+#      - ./postgres-data:/var/lib/postgresql/data
+#      - ./sql/data.sql:/docker-entrypoint-initdb.d/data.sql
+#  pgadmin_container:
+#    container_name: db_web
+#    image: dpage/pgadmin4
+#    restart: always
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: root
+#    ports:
+#      - "8081:80"
+
+#   INIT MYSQL DB
+  db:
+    image: mysql:latest
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: voltron
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: voltron
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - "8081:80"
+
+  api_container:
+    build:
+      context: ../back
+      dockerfile: ../back/Dockerfile
+    container_name: api_container
+    hostname: api_container
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    stdin_open: true
+    tty: true
+    environment:
+      DB_PORT: 3306
+      DB_HOST: db
+    links:
+      - db
+    depends_on:
+      - db
+
+  front:
+    build:
+      context: ../front
+      dockerfile: ../front/Dockerfile
+    container_name: front
+    hostname: front
+    restart: unless-stopped
+    ports:
+      - "5000:3000"
+    stdin_open: true
+    tty: true
+    environment:
+       BACK_HOST: api_container
+    links:
+      - api_container
+    depends_on:
+      - api_container
+
+#  gitlab:
+#    image: 'gitlab/gitlab-ce:latest'
+#    restart: always
+#    hostname: 'groupe9.ddns.net'
+#    container_name: gitlab
+#    environment:
+#      GITLAB_OMNIBUS_CONFIG: |
+#        external_url 'http://groupe9.ddns.net:8929'
+#        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+#    ports:
+#      - '8929:8929'
+#      - '2224:22'
+#    volumes:
+#      - '$GITLAB_HOME/config:/etc/gitlab'
+#      - '$GITLAB_HOME/logs:/var/log/gitlab'
+#      - '$GITLAB_HOME/data:/var/opt/gitlab'
+#    shm_size: '256m'
+
+volumes:
+  dbdata:

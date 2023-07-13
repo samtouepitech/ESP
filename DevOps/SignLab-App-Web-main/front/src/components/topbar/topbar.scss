@@ -1,0 +1,40 @@
+.topbar {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+
+    span {
+        margin-left: 20px;
+        color: #9db6be;
+        font-family: "Poppins";
+    }
+    .current {
+        text-decoration: underline;
+    }
+    button {
+        position: absolute;
+        right: 0;
+        margin-right: 50px;
+        color: #f3f6f7;
+        background-color: #9db6be;
+        border: 1px solid #9db6be;
+        border-radius: 50px;
+        height: 60px;
+        width: 226px;
+
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+    button:active {
+        background-color: #F3F6F7;
+        color: #9db6be;
+        border: 1px solid #9db6be;
+    }
+}

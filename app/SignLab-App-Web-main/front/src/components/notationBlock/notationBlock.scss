@@ -1,0 +1,72 @@
+.notationBlock {
+    height: 376px;
+    width: 416px;
+    background-color: #068089;
+    margin: 24px;
+    filter: drop-shadow(10px 10px 51px rgba(0, 0, 0, 0.25));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 6px;
+    .top-block {
+        width: 60%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span {
+            margin-top: 20px;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 126.02%;
+        }
+    }
+    img {
+        color: white;
+    }
+    span {
+        font-family: "Poppins";
+        color: white;
+    }
+    .notation-checkbox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        .choice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .white-circle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                height: 30px;
+                width: 30px;
+                border-radius: 20px;
+                margin-right: 12px;
+                .blue-circle {
+                    background-color: #068089;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+
+    input {
+        width: 50%;
+        background-color: #068089;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+        outline: none;
+        font-family: 'Poppins';
+    }
+}
